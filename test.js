@@ -1,5 +1,6 @@
 const mysql = require("mysql");
 const restruct = require("./lib/restruct");
+const {spacePrint} = require("./lib/utils");
 
 let db = mysql.createConnection(
 {
@@ -10,7 +11,7 @@ let db = mysql.createConnection(
 	connectTimeout: 1000,
 });
 
-db = restruct(db);
+restruct(db);
 
 db.connect(function(error)
 {
@@ -25,5 +26,6 @@ db.connect(function(error)
 //return;
 db.query("SELECT `name` FROM `users` WHERE `id` = '5'", function(error, results, fields)
 {
-	console.log(arguments);
+	// HANDLE error AND fields
+	spacePrint("response", results.abc);
 });
