@@ -23,9 +23,17 @@ db.connect(function(error)
 
 	console.log("Connected to MySQL");
 });
-//return;
-db.query("SELECT `name` FROM `users` WHERE `id` = '5'", function(error, results, fields)
+
+db.query("SELECT `name`, `boop`, `banana` FROM `users` WHERE `id` = '5'", function(error, results, fields)
 {
+	if(error)
+	{
+		console.log(error);
+		return;
+	}
+
 	// HANDLE error AND fields
 	spacePrint("response", results.abc);
+
+	console.log(results.THIS_FUCKING_COLUMN);
 });
